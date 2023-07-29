@@ -21,29 +21,29 @@ const Card = (makale) => {
   //
 
   const cardDiv = document.createElement("div")
-  cardDiv.setAttribute("class","card")
+  cardDiv.setAttribute("class", "card")
 
   const headlineDiv = document.createElement("div")
-  headlineDiv.setAttribute("class","headline")
+  headlineDiv.setAttribute("class", "headline")
   headlineDiv.textContent = makale.anabaslik
 
   const authorDiv = document.createElement("div")
-  authorDiv.setAttribute("class","author")
+  authorDiv.setAttribute("class", "author")
 
   const imgDiv = document.createElement("div")
-  imgDiv.setAttribute("class","img-container")
+  imgDiv.setAttribute("class", "img-container")
 
   const img = document.createElement("img")
-  img.setAttribute("src",`${makale.yazarFoto}` )
+  img.setAttribute("src", `${makale.yazarFoto}`)
 
   const span = document.createElement("span")
   span.textContent = makale["yazarAdi"] + " tarafından";
 
   imgDiv.append(img)
-  authorDiv.append(imgDiv,span)
-  cardDiv.append(headlineDiv,authorDiv)
+  authorDiv.append(imgDiv, span)
+  cardDiv.append(headlineDiv, authorDiv)
 
-  cardDiv.addEventListener("click",(element)=>{
+  cardDiv.addEventListener("click", (element) => {
     console.log(makale.anabaslik)
   })
 
@@ -61,12 +61,12 @@ const cardEkleyici = (secici) => {
   // Card bileşenini kullanarak yanıttaki her makale nesnesinden bir kart oluşturun.
   // Her cardı, fonksiyona iletilen seçiciyle eşleşen DOM'daki öğeye ekleyin.
   //
-   const seciciSon = document.querySelector(secici)
+  const seciciSon = document.querySelector(secici)
 
-  async function sonFonksiyon(){
-    await axios.get(`http://localhost:5001/api/makaleler`).then((response)=>{
+  async function sonFonksiyon() {
+    await axios.get(`http://localhost:5001/api/makaleler`).then((response) => {
       console.log(response.data.makaleler.javascript)
-      
+
       const javascriptArray = response.data.makaleler.javascript
       javascriptArray.forEach(element => {
         seciciSon.append(Card(element))
@@ -89,9 +89,9 @@ const cardEkleyici = (secici) => {
       });
     })
   }
-sonFonksiyon()
+  sonFonksiyon()
 }
-  
+
 // }
 
 export { Card, cardEkleyici }

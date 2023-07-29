@@ -45,7 +45,7 @@ const headerEkleyici = (secici) => {
   // İPUCU: querySelector bir string alabilir (bknz: querySelector("#wrapper")) 
   // fakat aynı zamanda bir değişken de alabilir (bknz: querySelector(secici))
 
-  const bilesen =  Header("Burak CEVİZLİ Teknoloji Sayfası","29/07/23","Buraya yazı yazalım bakalım ne oluyor.")
+  const bilesen = Header("Burak CEVİZLİ Teknoloji Sayfası", "29/07/23", "Buraya yazı yazalım bakalım ne oluyor.")
 
   const secicibir = document.querySelector(secici)
 

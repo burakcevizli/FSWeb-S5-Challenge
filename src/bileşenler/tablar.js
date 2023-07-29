@@ -17,15 +17,15 @@ const Tablar = (konu) => {
   //
 
 
-  
 
-  const topicsDiv =  document.createElement("div")
-  topicsDiv.setAttribute("class","topics")
+
+  const topicsDiv = document.createElement("div")
+  topicsDiv.setAttribute("class", "topics")
 
 
   konu.forEach(element => {
     const javascriptDiv = document.createElement("div")
-    javascriptDiv.setAttribute("class","tab")
+    javascriptDiv.setAttribute("class", "tab")
     javascriptDiv.textContent = element
     topicsDiv.append(javascriptDiv)
   });
@@ -45,13 +45,13 @@ const tabEkleyici = (secici) => {
 
   const seciciiki = document.querySelector(secici)
 
-   async function sacmalık(){
-      await axios.get("http://localhost:5001/api/konular").then((response)=>{
-        const tablarr = Tablar(response.data.konular)
-        seciciiki.append(tablarr)
-      })
-    }
-    sacmalık();
+  async function sacmalık() {
+    await axios.get("http://localhost:5001/api/konular").then((response) => {
+      const tablarr = Tablar(response.data.konular)
+      seciciiki.append(tablarr)
+    })
+  }
+  sacmalık();
 }
 
 export { Tablar, tabEkleyici }
