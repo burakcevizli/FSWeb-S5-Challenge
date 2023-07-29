@@ -51,9 +51,7 @@ const tabEkleyici = (secici) => {
         seciciiki.append(tablarr)
       })
     }
-    
     sacmalık();
-
 }
 
 export { Tablar, tabEkleyici }
