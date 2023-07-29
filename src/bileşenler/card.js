@@ -34,14 +34,14 @@ const Card = (makale) => {
   imgDiv.setAttribute("class","img-container")
 
   const img = document.createElement("img")
-  img.setAttribute("src","makale.yazarFoto")
+  img.setAttribute("src",`${makale.yazarFoto}` )
 
   const span = document.createElement("span")
-  span.textContent = makale.yazarAdı + " tarafından"
+  span.textContent = makale["yazarAdi"] + " tarafından";
 
   imgDiv.append(img)
-  authorDiv.append(imgDiv)
-  cardDiv.append(headlineDiv,authorDiv,span)
+  authorDiv.append(imgDiv,span)
+  cardDiv.append(headlineDiv,authorDiv)
 
   cardDiv.addEventListener("click",(element)=>{
     console.log(makale.anabaslik)
@@ -61,18 +61,37 @@ const cardEkleyici = (secici) => {
   // Card bileşenini kullanarak yanıttaki her makale nesnesinden bir kart oluşturun.
   // Her cardı, fonksiyona iletilen seçiciyle eşleşen DOM'daki öğeye ekleyin.
   //
+   const seciciSon = document.querySelector(secici)
 
-  const seciciUc = document.querySelector(secici)
-
-  async function gorevAlti(){
-    await  axios.get(`http://localhost:5001/api/makaleler`).then((response)=>{
-      const makaleler = response.data.makaleler
-      seciciUc.append(makaleler)
+  async function sonFonksiyon(){
+    await axios.get(`http://localhost:5001/api/makaleler`).then((response)=>{
+      console.log(response.data.makaleler.javascript)
+      
+      const javascriptArray = response.data.makaleler.javascript
+      javascriptArray.forEach(element => {
+        seciciSon.append(Card(element))
+      });
+      const bootstrap = response.data.makaleler.bootstrap
+      bootstrap.forEach(element => {
+        seciciSon.append(Card(element))
+      });
+      const teknoloji = response.data.makaleler.teknoloji
+      teknoloji.forEach(element => {
+        seciciSon.append(Card(element))
+      });
+      const jquery = response.data.makaleler.jquery
+      jquery.forEach(element => {
+        seciciSon.append(Card(element))
+      });
+      const nodejs = response.data.makaleler["node.js"]
+      nodejs.forEach(element => {
+        seciciSon.append(Card(element))
+      });
     })
   }
-    gorevAlti()
-
-  
+sonFonksiyon()
 }
+  
+// }
 
 export { Card, cardEkleyici }
